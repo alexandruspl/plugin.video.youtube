@@ -52,7 +52,7 @@ def make_comment_item(context, provider, snippet, uri, total_replies=0):
     label_props = None
     plot_props = None
     is_edited = (snippet['publishedAt'] != snippet['updatedAt'])
-    
+
     str_likes = ('%.1fK' % (snippet['likeCount'] / 1000.0)) if snippet['likeCount'] > 1000 else str(snippet['likeCount'])
     str_replies = ('%.1fK' % (total_replies / 1000.0)) if total_replies > 1000 else str(total_replies)
 
@@ -479,8 +479,8 @@ def update_play_info(provider, context, video_id, video_item, video_stream, use_
     if 'headers' in video_stream:
         video_item.set_headers(video_stream['headers'])
 
-    # set uses_dash
-    video_item.set_use_dash(settings.use_dash())
+    # set uses_mpd
+    video_item.set_use_mpd_video(settings.use_mpd_videos())
 
     license_info = video_stream.get('license_info', {})
 
